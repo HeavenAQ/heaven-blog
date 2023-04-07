@@ -10,8 +10,18 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^2.2.0",
+    "@astrojs/react": "^2.1.1",
     "@astrojs/rss": "^2.3.2",
-    "@astrojs/sitemap": "^1.2.2"
+    "@astrojs/sitemap": "^1.2.2",
+    "@types/react": "^18.0.33",
+    "@types/react-dom": "^18.0.6",
+    "astro": "^2.2.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^5.57.1",
+    "eslint": "^8.37.0",
+    "eslint-plugin-astro": "^0.26.1"
   }
 }
