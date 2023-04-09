@@ -9,6 +9,7 @@ import Content from '../components/Content.astro';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
 import { Image } from '@astrojs/image/components';
+import { AiFillEdit } from 'react-icons/ai/index.js';
 
 const posts = (await getCollection('blog')).sort(
     (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
@@ -25,16 +26,19 @@ const posts = (await getCollection('blog')).sort(
         <Hero/>
 		<main class="pt-[56px]">
            <Content>
-                <section class="indent-4 text-justify mt-7">
+                <section class="indent-4 text-justify mt-2">
+                    <p>
                     Hi There! My name is Heaven, a current English major and Computer Science minor at National Sun Yat-Sen University. I&apos;m a network geek, Linux enthusiast and a dedicated vim user. Here I share the things I learn, the projects I made and the tools I use. By the way, the web design of this page is greatly inspired by
                     <a 
-                        class="inline-flex items-center gap-1 indent-1 text-orange-500"
+                        class="inline-flex items-center gap-1 indent-1 underline underline-offset-2 hover:text-orange-500 decoration-orange-500"
                         href="https://uses.craftz.dog/"
-                    >Takuya Matsuyama&apos;s What I Use</a>.
+                    >Takuya Matsuyama&apos;s What I Use</a>. 
+                    </p>
                 </section>
             </Content>
             <Content>
-                <section class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-20 text-center">
+                <h2 class="uppercase font-bold text-2xl mt-16 font-mplus inline-flex items-center gap-3"><AiFillEdit/>Posts</h2>
+                <section class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-8 text-center">
                 {
                     posts.map(
                         post => post.data.heroImage ? (
@@ -49,7 +53,7 @@ const posts = (await getCollection('blog')).sort(
                                     alt={post.data.title}
                                 />
                             </a>
-                            <h2 class="mt-3 font-bold text-xl"><a href={`/blog/${post.slug}`}>{post.data.title}</a></h2>
+                            <h2 class="mt-3 font-semibold text-xl"><a href={`/blog/${post.slug}`}>{post.data.title}</a></h2>
                             <FormattedDate date={post.data.pubDate}/>
                         </div>
                     ) : <></>)

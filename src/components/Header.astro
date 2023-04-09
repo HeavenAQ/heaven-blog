@@ -9,12 +9,11 @@ import { FaServer } from 'react-icons/fa/index';
 <header class="fixed w-full z-20 p-2 backdrop-blur-md">
     <div class="mx-auto max-w-3xl">
 	<nav class="space-x-3 flex items-center gap-3 text-base">
-        <h2 class="flex-start flex-auto flex items-center gap-3 font-semibold tracking-tighter p-2 font-mplus text-lg">
-          <FaServer/>  Heaven Chen
+        <h2 class="flex-start flex-auto flex items-center gap-3 font-semibold tracking-tighter p-2 font-mplus text-xl">
+          <a class="inline-flex gap-3 items-center" href="/"><FaServer/>  Heaven Chen</a>
         </h2>
         <div class="items-center gap-6 hidden md:flex">
             <HeaderLink href="/about">About</HeaderLink>
-            <HeaderLink href="/blog">Blogs</HeaderLink>
             <HeaderLink class="inline-flex items-center gap-1" href="https://github.com/withastro/astro" target="_blank"><IoLogoGithub/>Source</HeaderLink>
         </div>
         <ThemeToggleIcon client:load/>
