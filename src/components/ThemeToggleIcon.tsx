@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { IoSunny, IoMoon } from 'react-icons/io5/index.js'
 
-const themes = ['light', 'dark']
-
 export default function ThemeToggleIcon() {
     const [isMounted, setIsMounted] = useState(false)
     const [theme, setTheme] = useState(() => {
@@ -28,24 +26,17 @@ export default function ThemeToggleIcon() {
     }, [theme])
 
     useEffect(() => setIsMounted(true), [])
-
     return isMounted ? (
-        <div className="inline-flex items-center p-[1px] rounded-3xl bg-orange-300 dark:bg-zinc-600">
-            {themes.map(t => {
-                const checked = t === theme
-                return (
-                    <button
-                        key={t}
-                        className={`${
-                            checked ? 'bg-white text-black' : ''
-                        } cursor-pointer rounded-3xl p-2`}
-                        arai-label="Toggle Theme Icon"
-                        onClick={toggleTheme}
-                    >
-                        {t === 'light' ? <IoSunny /> : <IoMoon />}
-                    </button>
-                )
-            })}
+        <div className="inline-flex items-center p-[1px] rounded-lg hover:bg-orange-300 hover:dark:bg-zinc-600 duration-200">
+            <button
+                className={
+                    'text-black dark:text-zinc-100 cursor-pointer rounded-lg p-2'
+                }
+                arai-label="Toggle Theme Icon"
+                onClick={toggleTheme}
+            >
+                {theme === 'light' ? <IoSunny /> : <IoMoon />}
+            </button>
         </div>
     ) : (
         <></>

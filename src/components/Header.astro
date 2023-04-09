@@ -1,21 +1,23 @@
 ---
 import HeaderLink from './HeaderLink.astro';
 import { IoLogoGithub } from 'react-icons/io5/index';
-import DatabaseIcon from './DatabaseIcon';
 import ThemeToggleIcon from './ThemeToggleIcon';
+import DropDownIcon from './DropDownIcon';
+import { FaServer } from 'react-icons/fa/index';
 ---
 
 <header class="fixed w-full z-20 p-2 backdrop-blur-md">
     <div class="mx-auto max-w-3xl">
 	<nav class="space-x-3 flex items-center gap-3 text-base">
-        <h2 class="flex-start flex-auto gap-3 font-semibold tracking-tighter p-2 font-mplus text-lg">
-          <DatabaseIcon/>  Heaven Chen
+        <h2 class="flex-start flex-auto flex items-center gap-3 font-semibold tracking-tighter p-2 font-mplus text-lg">
+          <FaServer/>  Heaven Chen
         </h2>
         <div class="items-center gap-6 hidden md:flex">
             <HeaderLink href="/about">About</HeaderLink>
             <HeaderLink class="inline-flex items-center gap-1" href="https://github.com/withastro/astro" target="_blank"><IoLogoGithub/>Source</HeaderLink>
-            <ThemeToggleIcon client:load/>
         </div>
+        <ThemeToggleIcon client:load/>
+        <DropDownIcon client:visible>
 	</nav>
     </div>
 </header>

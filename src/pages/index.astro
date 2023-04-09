@@ -4,6 +4,8 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import Body from '../components/Body.astro';
+import Hero from '../components/Hero.astro';
+import Content from '../components/Content.astro';
 ---
 
 <!DOCTYPE html>
@@ -13,20 +15,18 @@ import Body from '../components/Body.astro';
 	</head>
 	<Body>
 		<Header title={SITE_TITLE} />
-		<main>
-			<h1 class="font-mplus"></h1>
-			<p>
-			</p>
-			<p>
-			</p>
-			<p></p>
-			<ul>
-				<li><code></code></li>
-				<li><code></code></li>
-				<li><code></code></li>
-				<li><code></code></li>
-				<li><code></code></li>
-			</ul>
+        <Hero/>
+		<main class="pt-[56px]">
+           <Content>
+                <section class="indent-4">
+                    Hi There! My name is Heaven, a current English major and Computer Science minor at National Sun Yat-Sen University. I&apos;m a network geek, Linux enthusiast and a dedicated vim user. Here I share the things I learn, the projects I made and the tools I use. By the way, the web design of this page is greatly inspired by
+                    <a 
+                        class="inline-flex items-center gap-1 indent-1 text-orange-500"
+                        href="https://uses.craftz.dog/"
+                    >Takuya Matsuyama&apos;s What I Use</a>.
+                </section>
+
+            </Content>
 		</main>
 		<Footer />
 	</Body>
