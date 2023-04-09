@@ -2,14 +2,6 @@ import React, { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { FiMenu, FiX } from 'react-icons/fi/index.js'
 
-const DropDownMenu = () => {
-    return (
-        <div className="absolute -bottom-32 duration-300">
-            Here is a drop down
-        </div>
-    )
-}
-
 export default function DropDownIcon() {
     const items = ['about', 'source', 'blogs', 'projects']
     return (
@@ -27,11 +19,12 @@ export default function DropDownIcon() {
                 leaveTo="transform opacity-0 scale-95"
             >
                 <Menu.Items className="absolute right-0 w-56 origin-top-right dark:divide-zinc-100 rounded-md bg-orange-50 dark:bg-zinc-500 flex flex-col p-1">
-                    {items.map(item => (
+                    {items.map((item, i) => (
                         <Menu.Item>
                             {({ active }) => (
                                 <a
                                     href={`/${item}`}
+                                    key={i}
                                     className={`${
                                         active &&
                                         'dark:bg-orange-50 bg-zinc-600 text-white dark:text-black'
