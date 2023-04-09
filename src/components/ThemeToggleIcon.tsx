@@ -3,15 +3,23 @@ import { IoSunny, IoMoon } from 'react-icons/io5/index.js'
 
 export default function ThemeToggleIcon() {
     const [isMounted, setIsMounted] = useState(false)
-    const [theme, setTheme] = useState(() => {
-        if (import.meta.env.SSR) {
-            return undefined
-        }
-        if (window.matchMedia('prefers-color-scheme: dark').matches) {
-            return 'dark'
-        }
-        return 'light'
-    })
+    const [theme, setTheme] = useState(
+        (() => {
+            if (import.meta.env.SSR) {
+                return undefined
+            }
+            if (
+                typeof localStorage !== 'undefined' &&
+                localStorage.getItem('theme')
+            ) {
+                return 'dark'
+            }
+            if (window.matchMedia('prefers-color-scheme: dark').matches) {
+                return 'dark'
+            }
+            return 'light'
+        })()
+    )
     const toggleTheme = () => {
         const t = theme === 'light' ? 'dark' : 'light'
         localStorage.setItem('theme', t)

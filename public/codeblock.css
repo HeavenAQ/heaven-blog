@@ -15,6 +15,8 @@ pre[class*='language-'] {
     word-spacing: normal;
     word-break: normal;
     word-wrap: normal;
+    margin-top: 20px;
+    margin-bottom: 20px;
     line-height: 1.5;
     font-size: 0.95em;
     border-radius: 1em;
@@ -98,6 +100,7 @@ pre[class*='language-'] {
 }
 
 .token.tag,
+.token.atrule,
 .token.operator,
 .token.keyword {
     color: #6eb6cd;
@@ -112,6 +115,7 @@ pre[class*='language-'] {
     color: #e07999;
 }
 
+.token.class-name,
 .token.function,
 .token.builtin,
 .token.char {
@@ -137,8 +141,6 @@ pre[class*='language-'] {
     color: #6a9488;
 }
 
-.token.class-name,
-.token.atrule,
 .token.attr-value {
     color: #8fbc6e;
 }
