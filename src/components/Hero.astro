@@ -1,7 +1,9 @@
 ---
 import { Image } from '@astrojs/image/components'
-const isProd = import.meta.env.PROD;
-const baseUrl = isProd ? 'https://heaven.dev' : '';
+const isProd = import.meta.env.PROD
+const baseUrl = isProd
+    ? 'https://heaven-blog-chenheaven-icloudcom.vercel.app/'
+    : ''
 ---
 
 <section
@@ -11,7 +13,7 @@ const baseUrl = isProd ? 'https://heaven.dev' : '';
         class="absolute top-14 w-full h-full overflow-hidden flex items-center justify-center"
     >
         <Image
-            src={baseUrl + "/images/hero.jpg"}
+            src={baseUrl + '/images/hero.jpg'}
             class="absolute object-cover opacity-50"
             height={1080}
             width={1920}

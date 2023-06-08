@@ -20,7 +20,7 @@ export default defineConfig({
                     h4: 'text-lg font-bold font-mplus mb-3',
                     h5: 'font-bold font-mplus mb-3',
                     h6: 'font-bold font-mplus mb-3',
-                    img: 'border border-slate-300 dark:border-zinc-700 rounded-xl mb-6',
+                    img: 'border border-slate-300 dark:border-zinc-700 rounded-xl mb-6 mt-5',
                     p: 'leading-6',
                     a: 'underline underline-offset-2 hover:text-orange-500 decoration-orange-500',
                     ul: 'list-disc',

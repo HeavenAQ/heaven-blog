@@ -1,13 +1,19 @@
-import React, { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { FiMenu, FiX } from 'react-icons/fi/index.js'
 
 export default function DropDownIcon() {
     const items = ['about', 'blogs', 'projects']
+    const [isOpen, setIsOpen] = useState(false)
     return (
         <Menu as="div" className="relative inline-block text-left">
-            <Menu.Button className="hover:bg-orange-200 hover:dark:bg-zinc-700 cursor-pointer flex items-center justify-center relative rounded-lg duration-200 p-[0.6rem]">
-                <FiMenu />
+            <Menu.Button
+                className="hover:bg-orange-200 hover:dark:bg-zinc-700 cursor-pointer flex items-center justify-center relative rounded-lg duration-200 p-[0.6rem]"
+                onClick={() => {
+                    setIsOpen(!isOpen)
+                }}
+            >
+                {isOpen ? <FiX /> : <FiMenu />}
             </Menu.Button>
             <Transition
                 as={Fragment}

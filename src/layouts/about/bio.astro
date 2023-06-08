@@ -1,0 +1,38 @@
+---
+import Content from '../../components/Content.astro'
+import { Image } from '@astrojs/image/components'
+
+const isProd = import.meta.env.PROD
+const baseUrl = isProd ? 'https://heaven.dev' : ''
+---
+
+<section class="mb-10">
+    <Content>
+        <div class="flex w-full mb-5 items-center">
+            <div class="flex-auto">
+                <h1 class="text-4xl font-black font-mplus mb-3">Heaven Chen</h1>
+                <p class="text-md text-gray-500">
+                    Full Stack / Linux / Networking
+                </p>
+            </div>
+        </div>
+
+        <h1
+            class="text-2xl uppercase underline underline-offset-8 dark:decoration-blue-300 decoration-orange-500 tracking-[1px] font-semibold font-mplus"
+        >
+            Bio
+        </h1>
+        <p class="text-lg mt-4 text-justify font-mplus">
+            <span class="text-red-400 font-black font-mplus">
+                {'<Heaven Chen/>'}
+            </span> is a highly motivated English major and Computer Science minor
+            passionate about backend coding, Linux, and networking. With just over
+            a year of experience in the field of computer science, Chen has already
+            made significant strides in his career, currently serving as a software
+            intern at a firmware company. Chen is a dedicated learner and programming
+            enthusiast fluent in Python and C, and experienced in TypeScript, Javascript,
+            and Golang. Additionally, Chen also possesses a basic understanding of
+            networking such as TCP, UDP and gRPC, adding to his overall skillset.
+        </p>
+    </Content>
+</section>
