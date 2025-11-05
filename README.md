@@ -1,69 +1,151 @@
-# Astro Starter Kit: Blog
+# Heaven Blog
+
+> [!NOTE] 
+> 
+> This project is vibe-coded as it is only used to share the notes that I take : ).
+
+A modern, fast, and elegant personal blog built with Astro, React, and Tailwind CSS. This blog showcases technical articles, tutorials, and personal notes with support for mathematical expressions and enhanced markdown features.
+
+## Features
+
+- **Fast & Modern**: Built with Astro for optimal performance and minimal JavaScript
+- **Mathematical Expressions**: Full LaTeX support via KaTeX for technical writing
+- **GitHub-Style Alerts**: Enhanced markdown with styled admonitions
+- **Responsive Design**: Tailwind CSS with custom styling and dark mode support
+- **SEO Optimized**: Sitemap, RSS feed, and meta tags for better discoverability
+- **Syntax Highlighting**: Prism.js integration for beautiful code blocks
+- **Interactive Components**: React components for enhanced user experience
+
+## Tech Stack
+
+- **Framework**: [Astro](https://astro.build) 2.1.3
+- **UI Library**: [React](https://react.dev) 18
+- **Styling**: [Tailwind CSS](https://tailwindcss.com) 3.x
+- **Component Library**: Material-UI (@mui/material)
+- **Icons**: React Icons
+- **Math Rendering**: KaTeX
+- **Markdown**: Enhanced with remark-math and rehype plugins
+
+## Project Structure
 
 ```
-npm create astro@latest -- --template blog
-```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/blog)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/blog/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-
-![blog](https://user-images.githubusercontent.com/4677417/186189140-4ef17aac-c3c9-4918-a8c2-ce86ba1bb394.png)
-
-Features:
-
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```
-├── public/
+heaven-blog/
+├── public/          # Static assets (images, fonts, etc.)
 ├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
+│   ├── components/  # React and Astro components
+│   ├── content/     # Blog posts and content collections
+│   │   └── blog/    # Markdown blog posts
+│   ├── layouts/     # Page layouts
+│   ├── lib/         # Utility functions
+│   ├── pages/       # File-based routing
+│   ├── styles/      # Global styles
+│   └── consts.ts    # Site configuration constants
+├── astro.config.mjs # Astro configuration
+└── package.json     # Dependencies and scripts
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Getting Started
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### Prerequisites
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+- Node.js 16.x or higher
+- npm or yarn package manager
 
-Any static assets, like images, can be placed in the `public/` directory.
+### Installation
 
-## 🧞 Commands
+```bash
+# Install dependencies
+npm install
 
-All commands are run from the root of the project, from a terminal:
+# Or using yarn
+yarn install
+```
 
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `npm install`          | Installs dependencies                            |
-| `npm run dev`          | Starts local dev server at `localhost:3000`      |
-| `npm run build`        | Build your production site to `./dist/`          |
-| `npm run preview`      | Preview your build locally, before deploying     |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro --help` | Get help using the Astro CLI                     |
+### Development
 
-## 👀 Want to learn more?
+```bash
+# Start development server
+npm run dev
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+# The site will be available at http://localhost:3000
+```
 
-## Credit
+### Building for Production
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+```bash
+# Build the site
+npm run build
+
+# Preview the production build
+npm run preview
+```
+
+## Available Commands
+
+| Command            | Action                                           |
+| :----------------- | :----------------------------------------------- |
+| `npm install`      | Install dependencies                             |
+| `npm run dev`      | Start local dev server at `localhost:3000`       |
+| `npm run build`    | Build production site to `./dist/`               |
+| `npm run preview`  | Preview production build locally                 |
+| `npm run astro`    | Run Astro CLI commands                           |
+
+## Writing Blog Posts
+
+Blog posts are written in Markdown/MDX and stored in `src/content/blog/`. Each post includes frontmatter metadata:
+
+```markdown
+---
+title: "Your Post Title"
+description: "Post description"
+pubDate: "YYYY-MM-DD"
+tags: ["tag1", "tag2"]
+---
+
+Your content here...
+```
+
+### Special Features
+
+**Mathematical Expressions:**
+```markdown
+Inline math: $E = mc^2$
+
+Block math:
+$$
+\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+$$
+```
+
+**GitHub Alerts:**
+```markdown
+> [!NOTE]
+> Useful information that users should know
+
+> [!WARNING]
+> Urgent info that needs immediate attention
+```
+
+## Deployment
+
+This blog is deployed at [heaven-blog.netlify.app](https://heaven-blog.netlify.app/) and can be deployed to various platforms:
+
+- **Vercel**: Connect your GitHub repository for automatic deployments
+- **Netlify**: Import project and deploy
+- **Static Hosting**: Upload the `dist/` folder to any static host
+
+## Configuration
+
+Site configuration is managed in:
+- `astro.config.mjs` - Astro settings, integrations, and markdown plugins
+- `src/consts.ts` - Site constants and metadata
+- `tailwind.config.cjs` - Tailwind CSS customization
+
+## License
+
+Personal project by Heaven Chen.
+
+## Links
+
+- **Blog**:[heaven-blog.netlify.app](https://heaven-blog.netlify.app/) 
+- **Built with**: [Astro](https://astro.build)
