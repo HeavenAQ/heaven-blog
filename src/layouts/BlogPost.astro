@@ -18,6 +18,24 @@ const { title, description, createdAt, updatedDate, heroImage, categories = [], 
 
 <html lang="en">
 	<head>
+		<script is:inline>
+			// Initialize theme BEFORE any CSS loads to prevent flash
+			const theme = (() => {
+				if(typeof localStorage !== 'undefined' && localStorage.getItem('theme')){
+					return localStorage.getItem('theme')
+				}
+				if(window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					return 'dark'
+				}
+				return 'light'
+			})()
+
+			if (theme === 'dark') {
+				document.documentElement.classList.add('dark')
+			} else {
+				document.documentElement.classList.remove('dark')
+			}
+		</script>
 		<BaseHead title={title} description={description} />
         <link href="/codeblock.css" rel="stylesheet" />
 	</head>
