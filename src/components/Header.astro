@@ -2,7 +2,7 @@
 import HeaderLink from './HeaderLink.astro';
 import { IoLogoGithub } from 'react-icons/io5/index';
 import ThemeToggleIcon from './ThemeToggleIcon';
-import DropDownIcon from './DropDownIcon';
+import NavMenu from './NavMenu';
 import { FaServer } from 'react-icons/fa/index';
 ---
 
@@ -14,10 +14,15 @@ import { FaServer } from 'react-icons/fa/index';
         </h2>
         <div class="items-center gap-6 hidden md:flex">
             <HeaderLink href="/about">About</HeaderLink>
+            <HeaderLink href="/blog">Posts</HeaderLink>
+            <HeaderLink href="/categories">Topics</HeaderLink>
+            <HeaderLink href="/tags">Tags</HeaderLink>
             <HeaderLink class="inline-flex items-center gap-1" href="https://github.com/withastro/astro" target="_blank"><IoLogoGithub/>Source</HeaderLink>
         </div>
         <ThemeToggleIcon client:load/>
-        <DropDownIcon client:visible>
+        <div class="inline-block md:hidden">
+          <NavMenu client:visible />
+        </div>
 	</nav>
     </div>
 </header>

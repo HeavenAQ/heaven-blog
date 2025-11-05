@@ -1,0 +1,157 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Body from '../../components/Body.astro';
+import Container from '../../components/Container.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { getCollection } from 'astro:content';
+import { slugify } from '../../lib/slug';
+
+const posts = (await getCollection('blog')).sort((a,b)=> b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const catMap = new Map<string, number>();
+const tagMap = new Map<string, number>();
+for (const p of posts) {
+  for (const c of (p.data.categories || [])) catMap.set(c, (catMap.get(c) || 0) + 1);
+  for (const t of (p.data.tags || [])) tagMap.set(t, (tagMap.get(t) || 0) + 1);
+}
+const categories = Array.from(catMap.entries()).sort((a,b)=>a[0].localeCompare(b[0]));
+const tags = Array.from(tagMap.entries()).sort((a,b)=>a[0].localeCompare(b[0]));
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title="All Posts" description="Browse and filter all posts" />
+  </head>
+  <Body>
+    <Header />
+    <main class="pt-[80px]">
+      <Container className="max-w-5xl">
+        <h1 class="text-2xl md:text-3xl font-bold font-mplus">All Posts</h1>
+        <p class="text-sm text-zinc-600 dark:text-zinc-400 my-3">Search and filter by topics or tags.</p>
+
+        <section>
+            <details class="mb-4 rounded border border-zinc-200/60 dark:border-zinc-700/60">
+              <summary class="cursor-pointer px-4 py-2 font-medium">Filters</summary>
+              <div class="p-3 space-y-4">
+                <div class="relative">
+                  <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400">🔎</span>
+                  <input id="m-search" type="search" placeholder="Search posts" class="w-full pl-9 pr-3 py-2 rounded-full bg-white/70 dark:bg-zinc-800/70 border border-zinc-200/60 dark:border-zinc-700/60 shadow-sm outline-none focus:ring-2 focus:ring-orange-400/60" />
+                </div>
+                <div>
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="text-sm font-medium">Topics</span>
+                    <button id="clearFilters" class="text-xs underline">Clear</button>
+                  </div>
+                  <div class="flex flex-wrap gap-2 p-3">
+                    {categories.map(([name]) => (
+                      <button class="tag-pill" data-type="cat" data-value={slugify(name)}>{name}</button>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <div class="text-sm font-medium mb-3">Tags</div>
+                  <div class="flex flex-wrap gap-2 max-h-48 overflow-auto p-3">
+                    {tags.map(([name]) => (
+                      <button class="tag-pill" data-type="tag" data-value={slugify(name)}>#{name}</button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </details>
+
+            <div id="cards" class="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
+              {posts.map((p) => {
+                const cats = (p.data.categories || []).map(slugify);
+                const tgs = (p.data.tags || []).map(slugify);
+                const dataCats = cats.join(' ');
+                const dataTags = tgs.join(' ');
+                return (
+                  <a href={`/blog/${p.slug}`} class="group rounded-2xl border border-zinc-200/60 dark:border-zinc-700/60 overflow-hidden hover:border-orange-400/70 hover:shadow-md transition-colors bg-white/60 dark:bg-zinc-900/40 backdrop-blur" data-cats={dataCats} data-tags={dataTags} data-title={p.data.title.toLowerCase()} data-desc={p.data.description.toLowerCase()}>
+                    {p.data.heroImage && (
+                      <img src={p.data.heroImage} alt={p.data.title} class="w-full h-56 object-cover group-hover:opacity-95" loading="lazy" />
+                    )}
+                    <div class="p-6">
+                      <h3 class="font-semibold text-xl mb-1 group-hover:text-orange-600 dark:group-hover:text-orange-400 leading-snug">{p.data.title}</h3>
+                      <div class="text-sm text-zinc-600 dark:text-zinc-400"><FormattedDate date={p.data.pubDate} /></div>
+                      <p class="mt-2 text-[15px] opacity-90 line-clamp-2">{p.data.description}</p>
+                      {(p.data.tags?.length || 0) > 0 && (
+                        <div class="mt-3 flex flex-wrap gap-2">
+                          {p.data.tags!.slice(0,4).map((t) => <span class="tag-pill">#{t}</span>)}
+                        </div>
+                      )}
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </section>
+       </div>
+       </Container>
+    </main>
+    <Footer />
+  </Body>
+</html>
+
+<script>
+  // Simple client-side filtering by topic, tag, and search
+  const selected = { cat: null as string | null, tags: new Set<string>(), q: '' };
+  const cards = Array.from(document.querySelectorAll<HTMLAnchorElement>('#cards > a'));
+  const inputs = {
+    search: document.getElementById('search') as HTMLInputElement | null,
+    msearch: document.getElementById('m-search') as HTMLInputElement | null,
+  };
+
+  function apply() {
+    const q = selected.q.trim().toLowerCase();
+    for (const el of cards) {
+      const inCat = !selected.cat || (el.dataset.cats || '').split(' ').includes(selected.cat);
+      const elTags = (el.dataset.tags || '').split(' ').filter(Boolean);
+      const inTags = selected.tags.size === 0 || Array.from(selected.tags).every(t => elTags.includes(t));
+      const text = `${el.dataset.title} ${el.dataset.desc}`;
+      const inSearch = !q || text.includes(q);
+      el.style.display = (inCat && inTags && inSearch) ? '' : 'none';
+    }
+  }
+
+  function onClickChip(ev: Event) {
+    const btn = (ev.target as Element).closest('button');
+    if (!btn) return;
+    const type = btn.getAttribute('data-type');
+    const value = btn.getAttribute('data-value');
+    if (!type || !value) return;
+    if (type === 'cat') {
+      selected.cat = (selected.cat === value) ? null : value;
+      document.querySelectorAll('button[data-type="cat"]').forEach(b => b.classList.remove('ring-2'));
+      if (selected.cat) btn.classList.add('ring-2');
+    } else if (type === 'tag') {
+      if (selected.tags.has(value)) selected.tags.delete(value); else selected.tags.add(value);
+      btn.classList.toggle('ring-2');
+    }
+    apply();
+  }
+
+  document.addEventListener('click', (e) => {
+    const t = e.target as Element;
+    if ((t.closest('button[data-type="cat"]') || t.closest('button[data-type="tag"]'))) onClickChip(e);
+    if ((t as Element).id === 'clearFilters' || (t as Element).id === 'm-clearFilters') {
+      selected.cat = null; selected.tags.clear();
+      document.querySelectorAll('button[data-type]').forEach(b => b.classList.remove('ring-2'));
+      apply();
+    }
+  });
+
+  for (const el of [inputs.search, inputs.msearch]) {
+    el?.addEventListener('input', (e) => { selected.q = (e.target as HTMLInputElement).value; apply(); });
+  }
+</script>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

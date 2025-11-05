@@ -50,4 +50,27 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 
     const root = document.documentElement
     theme === 'light' ? root.classList.remove('dark') : root.classList.add('dark')
+
+    // Progressive enhancement: View Transitions for same-origin navigations
+    const enableViewTransitions = () => {
+      if (!('startViewTransition' in document)) return;
+      document.addEventListener('click', (event) => {
+        if (event.defaultPrevented) return;
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        const anchor = event.target && (event.target as Element).closest?.('a');
+        if (!anchor) return;
+        const url = new URL((anchor as HTMLAnchorElement).href, location.href);
+        if (url.origin !== location.origin) return; // external
+        if ((anchor as HTMLAnchorElement).target && (anchor as HTMLAnchorElement).target !== '_self') return;
+        if ((anchor as HTMLAnchorElement).hasAttribute('download')) return;
+        if (url.pathname === location.pathname && url.hash) return; // in-page hash
+        event.preventDefault();
+        // kick off transition
+        // @ts-ignore
+        document.startViewTransition(() => {
+          window.location.href = url.toString();
+        });
+      });
+    };
+    enableViewTransitions();
 </script>

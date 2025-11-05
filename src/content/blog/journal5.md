@@ -3,6 +3,8 @@ title: 'Multimedia and English Communication Journal #5'
 description: 'A homework assignment for Multimedia and English Communication'
 pubDate: '06/08/2023'
 heroImage: '/images/journal-hero.jpg'
+categories: ['Journal', 'Environmental Protection']
+tags: ['environment', 'air pollution', 'ocean', 'snorkeling']
 ---
 
 # Theme

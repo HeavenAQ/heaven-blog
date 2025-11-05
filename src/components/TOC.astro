@@ -1,0 +1,88 @@
+---
+export interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+export interface Props {
+  headings: Heading[];
+  variant?: 'both' | 'sidebar' | 'inline';
+}
+
+const { headings = [], variant = 'both' } = Astro.props as Props;
+const filtered = headings.filter((h) => h.depth === 2 || h.depth === 3);
+---
+
+{filtered.length > 0 && variant !== 'inline' && (
+  <aside class="toc hidden lg:block top-24 sticky self-start w-64 text-sm">
+    <div class="rounded-lg border p-3 border-zinc-200/60 dark:border-zinc-700/60 bg-white/60 dark:bg-zinc-900/40 backdrop-blur">
+      <div class="font-semibold mb-2 text-zinc-700 dark:text-zinc-300">On this page</div>
+      <ul>
+        {filtered.map((h) => (
+          <li class={`my-1 ${h.depth === 3 ? 'ml-4' : ''}`}>
+            <a href={`#${h.slug}`} class="toc-link block py-1 px-2 rounded hover:text-orange-600 dark:hover:text-orange-400">
+              {h.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </aside>
+)}
+
+{variant !== 'sidebar' && (
+  <details class="lg:hidden mb-4 rounded border border-zinc-200/60 dark:border-zinc-700/60">
+    <summary class="cursor-pointer px-4 py-2 font-medium">On this page</summary>
+    <ul class="px-2 pb-2">
+      {filtered.map((h) => (
+        <li class={`my-1 ${h.depth === 3 ? 'ml-4' : ''}`}>
+          <a href={`#${h.slug}`} class="block py-1 px-2 rounded hover:text-orange-600 dark:hover:text-orange-400">{h.text}</a>
+        </li>
+      ))}
+    </ul>
+  </details>
+)}
+
+<script>
+  // Scrollspy: highlight active heading link
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const id = entry.target.getAttribute('id');
+        const link = document.querySelector(`.toc a[href="#${id}"]`);
+        if (!link) return;
+        if (entry.isIntersecting) {
+          document.querySelectorAll('.toc a').forEach((a) => a.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
+    },
+    { rootMargin: '0px 0px -60% 0px', threshold: [0, 1] }
+  );
+
+  document.querySelectorAll('h2[id], h3[id]').forEach((section) => {
+    observer.observe(section);
+  });
+
+  // Smooth-scrolling when clicking TOC links with hash update
+  document.addEventListener('click', (e) => {
+    const a = (e.target as Element).closest?.('.toc a, details a');
+    if (!a) return;
+    const href = (a as HTMLAnchorElement).getAttribute('href') || '';
+    if (!href.startsWith('#')) return;
+    const id = href.slice(1);
+    const target = document.getElementById(id);
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // reflect hash without jumping
+    history.replaceState(null, '', `#${id}`);
+  });
+</script>
+
+<style>
+  .toc a.active { color: rgb(234 88 12); /* orange-600 */ }
+  :root.dark .toc a.active { color: rgb(251 146 60); /* orange-400 */ }
+  
+</style>

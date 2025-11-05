@@ -4,6 +4,8 @@ description: 'This is a python test'
 pubDate: 'Jul 01 2022'
 heroImage: '/placeholder-hero.jpg'
 updatedDate: 'Jul 03 2022'
+categories: ['Programming', 'Python']
+tags: ['decorators', 'parsing', 'xml', 'json']
 ---
 
 ```py

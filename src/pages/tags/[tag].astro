@@ -1,0 +1,48 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Body from '../../components/Body.astro';
+import Container from '../../components/Container.astro';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../../components/FormattedDate.astro';
+import { slugify, deslugify } from '../../lib/slug';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  const tags = new Set<string>();
+  posts.forEach((p) => (p.data.tags || []).forEach((t)=> tags.add(slugify(t))));
+  return Array.from(tags).map((t) => ({ params: { tag: t }}));
+}
+
+const { tag } = Astro.params;
+const posts = (await getCollection('blog')).filter((p) => (p.data.tags || []).some((t)=> slugify(t) === tag));
+const display = deslugify(tag!);
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={`Tag: ${display}`} description={`Posts tagged ${display}`} />
+  </head>
+  <Body>
+    <Header />
+    <main class="pt-[80px]">
+      <Container>
+        <a href="/tags" class="text-sm hover:underline hover:text-orange-600 dark:hover:text-orange-400">← All tags</a>
+        <h1 class="text-2xl md:text-3xl font-bold font-mplus mt-2">#{display}</h1>
+        <ul class="mt-6 space-y-4 list-none p-0">
+          {posts.map((p) => (
+            <li class="list-none rounded-lg border border-zinc-200/60 dark:border-zinc-700/60 p-4 hover:border-orange-500/70">
+              <a href={`/blog/${p.slug}`}>
+                <h3 class="font-semibold text-lg">{p.data.title}</h3>
+                <div class="text-sm text-zinc-600 dark:text-zinc-400"><FormattedDate date={p.data.pubDate} /></div>
+                <p class="mt-2 text-sm opacity-90">{p.data.description}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </Container>
+    </main>
+    <Footer />
+  </Body>
+</html>

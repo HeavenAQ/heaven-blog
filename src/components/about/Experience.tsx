@@ -1,6 +1,6 @@
 import React from 'react'
 import { BiCodeAlt } from 'react-icons/bi/index.js'
-import Projects from './projects'
+import Projects from './Projects'
 
 interface ExperienceInfo {
   title: string
@@ -159,4 +159,3 @@ export default function Experience(): JSX.Element {
     </>
   )
 }
-

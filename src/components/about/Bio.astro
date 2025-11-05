@@ -1,5 +1,5 @@
 ---
-import Content from '../../components/Content.astro'
+import Container from '../../components/Container.astro'
 import { Image } from '@astrojs/image/components'
 
 const isProd = import.meta.env.PROD
@@ -7,7 +7,7 @@ const baseUrl = isProd ? 'https://heaven.dev' : ''
 ---
 
 <section class="mb-10">
-    <Content>
+    <Container>
         <div class="flex w-full mb-5 items-center">
             <div class="flex-auto">
                 <h1 class="text-4xl font-black font-mplus mb-3">Heaven Chen</h1>
@@ -37,5 +37,5 @@ const baseUrl = isProd ? 'https://heaven.dev' : ''
             contribute to innovative teams focused on <strong>ML tooling, AI systems,</strong> and 
             <strong>infrastructure development.</strong>
         </p>
-    </Content>
+    </Container>
 </section>

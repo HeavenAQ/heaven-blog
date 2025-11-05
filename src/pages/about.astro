@@ -4,9 +4,9 @@ import Header from '../components/Header.astro'
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts'
 import Body from '../components/Body.astro'
 import Hero from '../components/Hero.astro'
-import Content from '../components/Content.astro'
-import Bio from '../layouts/about/bio.astro'
-import Experience from '../layouts/about/experience'
+import Container from '../components/Container.astro'
+import Bio from '../components/about/Bio.astro'
+import Experience from '../components/about/Experience'
 
 const isProd = import.meta.env.PROD
 ---
@@ -21,9 +21,9 @@ const isProd = import.meta.env.PROD
         <Hero />
         <main class="pt-[56px]">
             <Bio />
-            <Content>
+            <Container>
                 <Experience />
-            </Content>
+            </Container>
         </main>
     </Body>
 </html>

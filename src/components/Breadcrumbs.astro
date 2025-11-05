@@ -1,0 +1,37 @@
+---
+import { slugify } from "../lib/slug";
+
+export interface Props {
+  categories?: string[];
+  title?: string;
+}
+
+const { categories = [], title = '' } = Astro.props as Props;
+---
+
+<nav aria-label="Breadcrumb" class="text-sm mb-4 text-zinc-600 dark:text-zinc-400">
+  <ol class="flex flex-wrap items-center gap-1">
+    <li><a href="/" class="hover:underline hover:text-orange-600 dark:hover:text-orange-400">Home</a></li>
+    <li class="mx-1">/</li>
+    <li><a href="/" class="hover:underline hover:text-orange-600 dark:hover:text-orange-400">Blog</a></li>
+    {categories.map((cat, idx) => (
+      <Fragment>
+        <li class="mx-1">/</li>
+        <li>
+          <a href={`/categories/${slugify(cat)}`} class="hover:underline hover:text-orange-600 dark:hover:text-orange-400">{cat}</a>
+        </li>
+      </Fragment>
+    ))}
+    {title && (
+      <Fragment>
+        <li class="mx-1">/</li>
+        <li aria-current="page" class="truncate max-w-[60vw] md:max-w-[40vw] lg:max-w-[30vw] text-zinc-800 dark:text-zinc-200">{title}</li>
+      </Fragment>
+    )}
+  </ol>
+  <hr class="mt-3 border-zinc-200/60 dark:border-zinc-700/60" />
+  <style>
+    hr { border-top-width: 1px; }
+  </style>
+  
+</nav>

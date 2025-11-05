@@ -4,6 +4,8 @@ description: 'Here is a sample of some basic Markdown syntax that can be used wh
 pubDate: 'Jul 01 2022'
 heroImage: '/placeholder-hero.jpg'
 updatedDate: 'Jul 03 2022'
+categories: ['Programming', 'JavaScript']
+tags: ['this', 'methods', 'arrow functions', 'event listeners']
 ---
 
 ## This keyword

@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import Body from '../components/Body.astro';
 import Hero from '../components/Hero.astro';
-import Content from '../components/Content.astro';
+import Container from '../components/Container.astro';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
 import { Image } from '@astrojs/image/components';
@@ -25,7 +25,7 @@ const posts = (await getCollection('blog')).sort(
 		<Header title={SITE_TITLE} />
         <Hero/>
 		<main class="pt-[56px]">
-           <Content>
+           <Container>
                 <section class="indent-4 text-justify mt-2">
                     <p>
                     Hi There! My name is <span class="text-red-400 font-black font-mplus">{"<Heaven/>"}</span>, a current English major and Computer Science minor at National Sun Yat-Sen University. I&apos;m a network geek, Linux enthusiast and a dedicated vim user. Here I share the things I learn, the projects I built and the tools I use. By the way, the web design of this page is greatly inspired by
@@ -35,8 +35,8 @@ const posts = (await getCollection('blog')).sort(
                     >Takuya Matsuyama&apos;s What I Use</a>. 
                     </p>
                 </section>
-            </Content>
-            <Content>
+            </Container>
+            <Container>
                 <h2 class="uppercase font-bold text-2xl mt-16 font-mplus inline-flex items-center gap-3"><AiFillEdit className="text-orange-500"/>Posts</h2>
                 <section class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-8 text-center">
                 {
@@ -59,7 +59,7 @@ const posts = (await getCollection('blog')).sort(
                     ) : <></>)
                 }
                 </section>
-            </Content>
+            </Container>
 		</main>
 		<Footer />
 	</Body>

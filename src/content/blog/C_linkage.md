@@ -3,6 +3,8 @@ title: 'C Variable Scope'
 description: "Let's talk about how C handles variable scope"
 pubDate: '2023-04-09'
 heroImage: '/placeholder-hero.jpg'
+categories: ['Programming', 'C']
+tags: ['storage', 'linkage', 'scope', 'static', 'extern']
 ---
 
 # Storage Class
