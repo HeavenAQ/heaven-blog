@@ -2,6 +2,7 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
+import 'katex/dist/katex.min.css';
 
 export interface Props {
 	title: string;
@@ -73,4 +74,26 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
       });
     };
     enableViewTransitions();
+</script>
+
+<!-- KaTeX auto-render to handle math inside TOC and other dynamic text -->
+<script type="module" is:inline>
+  import renderMathInElement from 'katex/contrib/auto-render.mjs';
+  const renderAll = () => {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      ignoredTags: ['script', 'style', 'textarea', 'pre', 'code'],
+    });
+  };
+  // Initial load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderAll, { once: true });
+  } else {
+    renderAll();
+  }
+  // Re-run after Astro view transitions / client navigations
+  document.addEventListener('astro:page-load', renderAll);
 </script>

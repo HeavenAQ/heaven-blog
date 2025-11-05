@@ -4,12 +4,18 @@ import react from '@astrojs/react'
 import image from '@astrojs/image'
 import tailwind from '@astrojs/tailwind'
 import addClasses from 'rehype-add-classes'
+import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex'
+import { rehypeGithubAlerts } from 'rehype-github-alerts'
 
 // https://astro.build/config
 export default defineConfig({
     site: 'https://blog.heaven.dev',
     integrations: [sitemap(), react(), image(), tailwind()],
     markdown: {
+        remarkPlugins: [
+            remarkMath
+        ],
         rehypePlugins: [
             [
                 addClasses,
@@ -28,7 +34,9 @@ export default defineConfig({
                     hr: 'mt-5 mb-4',
                     strong: 'text-gray-400'
                 }
-            ]
+            ],
+            [rehypeKatex, { throwOnError: false }],
+            rehypeGithubAlerts
         ],
         syntaxHighlight: 'prism'
     }
