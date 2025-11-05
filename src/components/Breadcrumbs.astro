@@ -1,5 +1,5 @@
 ---
-import { slugify } from "../lib/slug";
+import { slugify, titleCase } from "../lib/slug";
 
 export interface Props {
   categories?: string[];
@@ -18,7 +18,7 @@ const { categories = [], title = '' } = Astro.props as Props;
       <Fragment>
         <li class="mx-1">/</li>
         <li>
-          <a href={`/categories/${slugify(cat)}`} class="hover:underline hover:text-orange-600 dark:hover:text-orange-400">{cat}</a>
+          <a href={`/categories/${slugify(cat)}`} class="hover:underline hover:text-orange-600 dark:hover:text-orange-400">{titleCase(cat)}</a>
         </li>
       </Fragment>
     ))}

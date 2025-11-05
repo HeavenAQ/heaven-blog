@@ -35,7 +35,7 @@ const display = deslugify(category!);
             <li class="rounded-lg border border-zinc-200/60 dark:border-zinc-700/60 p-4 hover:border-orange-500/70">
               <a href={`/blog/${p.slug}`}>
                 <h3 class="font-semibold text-lg">{p.data.title}</h3>
-                <div class="text-sm text-zinc-600 dark:text-zinc-400"><FormattedDate date={p.data.pubDate} /></div>
+                <div class="text-sm text-zinc-600 dark:text-zinc-400"><FormattedDate date={p.data.createdAt} /></div>
                 <p class="mt-2 text-sm opacity-90">{p.data.description}</p>
               </a>
             </li>

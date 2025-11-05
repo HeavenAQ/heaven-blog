@@ -13,6 +13,13 @@ export interface Props {
 import katex from 'katex';
 
 const { headings = [], variant = 'both' } = Astro.props as Props;
+const isSidebar = variant === 'sidebar';
+const asideClass = isSidebar
+  ? 'toc block w-64 text-sm'
+  : 'toc hidden lg:block top-24 sticky self-start w-64 text-sm';
+const boxClass = isSidebar
+  ? 'rounded-lg border p-3 border-zinc-200/60 dark:border-zinc-700/60 bg-white/60 dark:bg-zinc-900/40 backdrop-blur'
+  : 'rounded-lg border p-3 border-zinc-200/60 dark:border-zinc-700/60 bg-white/60 dark:bg-zinc-900/40 backdrop-blur max-h-[calc(100vh-7rem)] overflow-auto';
 const filtered = headings.filter((h) => h.depth === 2 || h.depth === 3);
 
 function renderMathInText(text: string): string {
@@ -38,8 +45,8 @@ function renderMathInText(text: string): string {
 ---
 
 {filtered.length > 0 && variant !== 'inline' && (
-  <aside class="toc hidden lg:block top-24 sticky self-start w-64 text-sm">
-    <div class="rounded-lg border p-3 border-zinc-200/60 dark:border-zinc-700/60 bg-white/60 dark:bg-zinc-900/40 backdrop-blur max-h-[calc(100vh-7rem)] overflow-auto">
+  <aside class={asideClass}>
+    <div class={boxClass}>
       <div class="font-semibold mb-2 text-zinc-700 dark:text-zinc-300">On this page</div>
       <ul>
         {filtered.map((h) => (
@@ -68,26 +75,68 @@ function renderMathInText(text: string): string {
 
 <script>
   // Scrollspy: highlight active heading link
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        const id = entry.target.getAttribute('id');
-        const link = document.querySelector(`.toc a[href="#${id}"]`);
-        if (!link) return;
-        if (entry.isIntersecting) {
-          document.querySelectorAll('.toc a').forEach((a) => a.classList.remove('active'));
-          link.classList.add('active');
-        }
-      });
-    },
-    { rootMargin: '0px 0px -60% 0px', threshold: [0, 1] }
-  );
+  const getHeaderOffset = () => {
+    const header = document.querySelector('header');
+    // Fallback to 100px to match page padding if header is not found
+    const base = header ? (header as HTMLElement).offsetHeight : 100;
+    return base + 8; // add a small breathing room
+  };
 
-  document.querySelectorAll('h2[id], h3[id]').forEach((section) => {
-    observer.observe(section);
+  // Header-aware scrollspy using scroll position
+  const headings = Array.from(document.querySelectorAll('h2[id], h3[id]')) as HTMLElement[];
+  const links = Array.from(document.querySelectorAll('.toc a, details a')) as HTMLAnchorElement[];
+  const byId = new Map<string, HTMLAnchorElement[]>();
+  links.forEach((a) => {
+    const href = a.getAttribute('href') || '';
+    if (href.startsWith('#')) {
+      const id = href.slice(1);
+      const arr = byId.get(id) || [];
+      arr.push(a);
+      byId.set(id, arr);
+    }
   });
 
-  // Smooth-scrolling when clicking TOC links with hash update
+  const setActive = (id: string | null) => {
+    links.forEach((a) => a.classList.remove('active'));
+    if (!id) return;
+    const match = byId.get(id);
+    if (match) match.forEach((a) => a.classList.add('active'));
+  };
+
+  const updateActive = () => {
+    if (headings.length === 0) return;
+    const headerLine = getHeaderOffset();
+    let best: HTMLElement | null = headings[0];
+    let bestDist = -Infinity; // prefer the closest heading at/above header
+    for (const h of headings) {
+      const dist = h.getBoundingClientRect().top - headerLine;
+      if (dist <= 1 && dist > bestDist) {
+        bestDist = dist;
+        best = h;
+      }
+    }
+    setActive(best?.id || null);
+  };
+
+  // Initial and runtime activation
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateActive, { once: true });
+  } else {
+    updateActive();
+  }
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        updateActive();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+  window.addEventListener('resize', updateActive);
+
+  // Smooth-scrolling when clicking TOC links with header-aware offset + hash update
   document.addEventListener('click', (e) => {
     const a = (e.target as Element).closest?.('.toc a, details a');
     if (!a) return;
@@ -97,10 +146,38 @@ function renderMathInText(text: string): string {
     const target = document.getElementById(id);
     if (!target) return;
     e.preventDefault();
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    // reflect hash without jumping
+    const top = target.getBoundingClientRect().top + window.pageYOffset - getHeaderOffset();
+    window.scrollTo({ top, behavior: 'smooth' });
+    // reflect hash without jumping (keeps back/forward stack stable)
     history.replaceState(null, '', `#${id}`);
+
+    // Close mobile TOC dropdown if open
+    const details = (a as Element).closest('details');
+    if (details && (details as HTMLDetailsElement).open) {
+      (details as HTMLDetailsElement).open = false;
+    }
+    // Immediately reflect active state for better UX
+    setActive(id);
   });
+
+  // If landing on a hash (deep link), adjust for header after content is ready
+  const scrollToHashIfAny = () => {
+    if (location.hash.length > 1) {
+      const id = decodeURIComponent(location.hash.slice(1));
+      const el = document.getElementById(id);
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.pageYOffset - getHeaderOffset();
+        window.scrollTo({ top });
+      }
+    }
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', scrollToHashIfAny, { once: true });
+  } else {
+    scrollToHashIfAny();
+  }
+  // In case hash changes via external code/links, realign position
+  window.addEventListener('hashchange', scrollToHashIfAny);
 
   // Enhance: replace TOC link HTML with the actual heading innerHTML (preserves math rendered by rehype-katex)
   const hydrateTOC = () => {
@@ -124,8 +201,10 @@ function renderMathInText(text: string): string {
   document.addEventListener('astro:page-load', hydrateTOC);
 </script>
 
-<style>
-  .toc a.active { color: rgb(234 88 12); /* orange-600 */ }
-  :root.dark .toc a.active { color: rgb(251 146 60); /* orange-400 */ }
-  
-</style>
+  <style>
+    .toc a.active { color: rgb(234 88 12); /* orange-600 */ }
+    :root.dark .toc a.active { color: rgb(251 146 60); /* orange-400 */ }
+    details a.active { color: rgb(234 88 12); }
+    :root.dark details a.active { color: rgb(251 146 60); }
+    
+  </style>

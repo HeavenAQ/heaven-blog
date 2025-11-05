@@ -5,7 +5,7 @@ import Footer from '../../components/Footer.astro';
 import Body from '../../components/Body.astro';
 import Container from '../../components/Container.astro';
 import { getCollection } from 'astro:content';
-import { slugify } from '../../lib/slug';
+import { slugify, titleCase } from '../../lib/slug';
 
 const posts = await getCollection('blog');
 const map = new Map<string, number>();
@@ -30,7 +30,7 @@ const categories = Array.from(map.entries()).sort((a,b)=>a[0].localeCompare(b[0]
           {categories.map(([name, count]) => (
             <li>
               <a href={`/categories/${slugify(name)}`} class="flex items-center justify-between rounded-lg border border-zinc-200/60 dark:border-zinc-700/60 px-4 py-3 hover:border-orange-500/70 hover:text-orange-600 dark:hover:text-orange-400">
-                <span>{name}</span>
+                <span>{titleCase(name)}</span>
                 <span class="text-xs opacity-70">{count}</span>
               </a>
             </li>
