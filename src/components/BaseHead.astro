@@ -78,7 +78,7 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 
 <!-- KaTeX auto-render to handle math inside TOC and other dynamic text -->
 <script type="module" is:inline>
-  import renderMathInElement from 'katex/contrib/auto-render.mjs';
+  import renderMathInElement from 'katex/dist/contrib/auto-render.mjs';
   const renderAll = () => {
     renderMathInElement(document.body, {
       delimiters: [
