@@ -39,5 +39,8 @@
     "rehype-github-alerts": "^4.1.1",
     "rehype-katex": "^7.0.1",
     "remark-math": "5.1.1"
+  },
+  "resolutions": {
+    "gray-matter/js-yaml": "^3.14.1"
   }
 }
