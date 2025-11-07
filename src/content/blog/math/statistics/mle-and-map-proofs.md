@@ -82,7 +82,7 @@ $$
 
 > [!NOTE]
 >
-> Check the full proof of Beta Distribution in [Beta and Gamma Distribution Proofs](inkdrop://note/h41gmnGy)
+> Check the full proof of Beta Distribution in [Beta and Gamma Distribution Proofs](/blog/math/statistics/beta-and-gamma-distribution-proofs)
 
 ## Beta Distribution - Illustration
 

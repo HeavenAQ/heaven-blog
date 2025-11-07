@@ -2,11 +2,14 @@
 categories:
 - Math
 - Probability
+- Statistics
 createdAt: '2025-09-20'
 description: $$
 tags:
 - Math
 - Probability
+- Statistics
+- in progress
 title: Distribution Proofs
 ---
 
