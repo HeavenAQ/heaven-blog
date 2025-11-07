@@ -8,7 +8,6 @@ description: '- The number of successes in a fixed number of independent trials,
 tags:
 - reading materials
 - Machine Learning
-- Machine Learning
 - AI
 title: Probability Distributions
 ---
@@ -33,7 +32,7 @@ $$
  - $P(X = k) = \begin{pmatrix}n \\ k\end{pmatrix}p^k(1 - p)^{(n -k)}$
 
 > [!TIP]
-> Full proofs of properties can be found in [Distribution Proofs](inkdrop://note/y-ZQhbrV)
+> Full proofs of properties can be found in [Distribution Proofs](/blog/math/statistics/distribution-proofs)
 
 ## Poisson Distribution
 

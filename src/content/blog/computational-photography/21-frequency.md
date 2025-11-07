@@ -173,7 +173,7 @@ $$
 - $\phi$: the phase (the angle).
 
 > [!TIP]
-> The derivation is shown in [Euler's Formula](inkdrop://note/GJYsjN3w)
+> The derivation is shown in [Euler's Formula](/blog/math/fourier-analysis/eulers-formula)
 
 ---
 

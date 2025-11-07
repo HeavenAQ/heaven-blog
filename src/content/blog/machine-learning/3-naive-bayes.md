@@ -107,7 +107,7 @@ $$
 $$
 
 > [!TIP]
-> You can find the full derivations of MLE and MAP in [MLE and MAP Proofs](inkdrop://note/NtAnFF5a)
+> You can find the full derivations of MLE and MAP in [MLE and MAP Proofs](/blog/math/statistics/mle-and-map-proofs)
 
 ## How to Choose Prior Distribution $P(\theta)$
 

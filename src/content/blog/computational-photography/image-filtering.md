@@ -244,7 +244,7 @@ $$
 
 > [!NOTE]
 >
-> Full proof can be found in [Euler's Formula](inkdrop://note/GJYsjN3w)
+> Full proof can be found in [Euler's Formula](/blog/math/fourier-analysis/eulers-formula)
 
 ### $\bullet$ Rewrite of the Fourier Series
 

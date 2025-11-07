@@ -33,7 +33,7 @@ $$
 
 > [!TIP]
 >
-> Check out more on SVM in [5. SVM](inkdrop://note/QYBrajjB)
+> Check out more on SVM in [5. SVM](/blog/machine-learning/5-svm)
 
 ## Loss Function
 
