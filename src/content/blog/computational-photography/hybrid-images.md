@@ -7,9 +7,8 @@ description: '- Two different interpretations of a picture can be perceived by'
 tags:
 - homework
 - Computational Photography
-title: Hybrid Images
+title: 'Lab: Hybrid Images'
 ---
-
 # Hybrid Images
 
 ## Introduction

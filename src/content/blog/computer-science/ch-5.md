@@ -5,9 +5,8 @@ createdAt: '2024-05-27'
 description: '> [!CAUTION]'
 tags:
 - Computer Architecture
-title: CH 5.
+title: 1. Chapter 5
 ---
-
 # CH 5.
 
 

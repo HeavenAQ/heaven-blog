@@ -7,9 +7,8 @@ description: '- defined on $(-\pi, \pi]$'
 tags:
 - Fourier Analysis
 - Math
-title: Fourier Series (I) - Prelude and Trigonometry
+title: 1. Fourier Series - Prelude and Trigonometry
 ---
-
 # Fourier Series (I) - Prelude and Trigonometry 
 
 ## Fourier Series - Prelude

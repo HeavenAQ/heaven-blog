@@ -9,9 +9,8 @@ tags:
 - Machine Learning
 - lectures
 - AI
-title: 6. Empirical Risk Minimization (ERM)
+title: 8. Empirical Risk Minimization (ERM)
 ---
-
 # 6. Empirical Risk Minimization (ERM)
 
 ## Recall: SVM

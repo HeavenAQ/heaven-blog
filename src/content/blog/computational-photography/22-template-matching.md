@@ -7,9 +7,8 @@ description: '- $1 \rightarrow D$'
 tags:
 - lectures
 - Computational Photography
-title: 2.2 Template Matching
+title: 3. Template Matching
 ---
-
 # 2.2 Template Matching
 
 ## Review - Matching Frequency Plots to Images

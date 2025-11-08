@@ -10,9 +10,8 @@ tags:
 - Machine Learning
 - lectures
 - AI
-title: 3. Naive Bayes
+title: 5. Naive Bayes
 ---
-
 # 3. Naive Bayes
 
 ## MLE and MAP

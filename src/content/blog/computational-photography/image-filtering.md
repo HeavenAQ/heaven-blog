@@ -7,9 +7,8 @@ description: $$
 tags:
 - reading materials
 - Computational Photography
-title: Image Filtering
+title: 'Lab: Image Filtering'
 ---
-
 # Image Filtering
 
 ## Goal

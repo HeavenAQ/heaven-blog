@@ -7,9 +7,8 @@ description: '- small segmentation errors noticeable'
 tags:
 - lectures
 - Computational Photography
-title: 5.1 Image Compositing
+title: 9. Image Compositing
 ---
-
 # 5.1 Image Compositing
 
 ## Feathering

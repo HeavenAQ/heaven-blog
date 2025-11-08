@@ -9,7 +9,6 @@ tags:
 - Computational Photography
 title: 1. Pixels and Linear Filters
 ---
-
 # 1. Pixels and Linear Filters
 
 ## Image Formation Process

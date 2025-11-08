@@ -7,9 +7,8 @@ description: $$
 tags:
 - lectures
 - Computational Photography
-title: 2.1 Frequency
+title: 2. Frequency
 ---
-
 # 2.1 Frequency
 
 ## A sum of sines

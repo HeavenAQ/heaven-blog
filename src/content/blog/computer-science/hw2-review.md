@@ -5,9 +5,8 @@ createdAt: '2024-05-30'
 description: '>[!CAUTION]'
 tags:
 - Compiler
-title: HW2 Review
+title: Homework 2 Review
 ---
-
 # HW2 Review
 
 

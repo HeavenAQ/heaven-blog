@@ -9,9 +9,8 @@ tags:
 - Machine Learning
 - Machine Learning
 - AI
-title: numpy
+title: 'Supplement: NumPy Tutorial'
 ---
-
 # numpy
 
 > [!IMPORTANT]

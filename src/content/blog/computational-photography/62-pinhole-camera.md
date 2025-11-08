@@ -7,9 +7,8 @@ description: '- Angless and length are lost'
 tags:
 - lectures
 - Computational Photography
-title: 6.2 Pinhole Camera
+title: 12. Pinhole Camera
 ---
-
 # 6.2 Pinhole Camera
 
 ## Projective Geometry

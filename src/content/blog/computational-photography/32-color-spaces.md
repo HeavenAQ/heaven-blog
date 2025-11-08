@@ -8,9 +8,8 @@ description: '**RGB** stands for **Red–Green–Blue**, an **additive color mod
 tags:
 - lectures
 - Computational Photography
-title: 3.2 Color Spaces
+title: 14. Color Spaces
 ---
-
 # 3.2 Color Spaces
 
 # Color Spaces Overview

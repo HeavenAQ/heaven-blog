@@ -10,9 +10,8 @@ tags:
 - Probability
 - Statistics
 - in progress
-title: Distribution Proofs
+title: 1. Distribution Proofs
 ---
-
 # Distribution Proofs
 
 ## Properties of Binomial Distribution

@@ -7,10 +7,8 @@ tags:
 - Proof
 - Machine Learning
 - AI
-title: Representer Theorem 
+title: 'Supplement: Representer Theorem'
 ---
-
-
 Any optimal solution $w^*$ can be expressed as:
 
 $$

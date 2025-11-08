@@ -7,9 +7,8 @@ description: '```python'
 tags:
 - Fourier Analysis
 - Math
-title: Intro - Sound Wave
+title: 2. Introduction to Sound Waves
 ---
-
 # Intro - Sound Wave
 
 ## C Major Chord

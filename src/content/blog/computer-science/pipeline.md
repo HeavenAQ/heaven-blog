@@ -6,9 +6,8 @@ description: '- `Single cycle` mechanism only allows instructions to be processe
  one at a time'
 tags:
 - Computer Architecture
-title: Pipeline
+title: 3. Pipeline
 ---
-
 # Pipeline
 
 

@@ -7,9 +7,8 @@ description: '- Create new samples of a given texture'
 tags:
 - lectures
 - Computational Photography
-title: 4.1 Texture Synthesis
+title: 6. Texture Synthesis
 ---
-
 # 4.1 Texture Synthesis
 
 ## Goal

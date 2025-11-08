@@ -7,9 +7,8 @@ description: $$
 tags:
 - lectures
 - Computational Photography
-title: 5.2 Image Warping
+title: 10. Image Warping
 ---
-
 # 5.2 Image Warping
 
 ![clipboard.png](/blog/52-image-warping/d416vVDu-clipboard.webp)

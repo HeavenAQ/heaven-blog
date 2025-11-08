@@ -7,9 +7,8 @@ description: $$
 tags:
 - lectures
 - Computational Photography
-title: 7.1 Single-view Metrology and Cameras
+title: 13. Single-view Metrology and Cameras
 ---
-
 # 7.1 Single-view Metrology and Cameras
 
 ## Review: Projection Matrix

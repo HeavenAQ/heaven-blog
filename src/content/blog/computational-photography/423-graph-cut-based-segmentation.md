@@ -8,9 +8,8 @@ description: '- Good region is similar to foreground color model and dissimilar 
 tags:
 - lectures
 - Computational Photography
-title: '4.2.3: Graph Cut-Based Segmentation'
+title: 7. Graph Cut-Based Segmentation
 ---
-
 # 4.2.3: Graph Cut-Based Segmentation
 
 ## GrabCut
