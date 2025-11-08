@@ -7,9 +7,8 @@ description: $$
 tags:
 - Math
 - Probability
-title: Beta and Gamma Distribution Proofs
+title: 3. Beta and Gamma Distribution Proofs
 ---
-
 # Beta and Gamma Distribution Proofs
 
 ## $\Gamma$ Function

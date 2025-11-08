@@ -9,9 +9,8 @@ tags:
 - Machine Learning
 - lectures
 - AI
-title: 9. Bias Variance
+title: 10. Bias-Variance Tradeoff
 ---
-
 # 9. Bias Variance
 
 ## Training Data

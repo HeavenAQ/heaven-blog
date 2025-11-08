@@ -9,9 +9,8 @@ tags:
 - Machine Learning
 - lectures
 - AI
-title: 4. Linear Regression
+title: 6. Linear Regression
 ---
-
 # 4. Linear Regression
 
 ## Regression

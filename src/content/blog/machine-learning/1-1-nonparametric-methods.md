@@ -10,9 +10,8 @@ tags:
 - Machine Learning
 - Machine Learning
 - AI
-title: 1-1. Nonparametric Methods
+title: 3. Nonparametric Methods
 ---
-
 # 1-1. Nonparametric Methods
 
 ## Introduction

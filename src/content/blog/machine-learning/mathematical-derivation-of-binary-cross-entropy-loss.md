@@ -9,9 +9,8 @@ tags:
 - Machine Learning
 - Machine Learning
 - AI
-title: Mathematical Derivation of Binary Cross-Entropy Loss
+title: 'Supplement: Binary Cross-Entropy Loss Derivation'
 ---
-
 # Mathematical Derivation of Binary Cross-Entropy Loss
 
 ## 1. The Cost Function (Binary Cross-Entropy)

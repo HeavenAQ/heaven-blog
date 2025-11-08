@@ -9,9 +9,8 @@ tags:
 - Machine Learning
 - Machine Learning
 - AI
-title: Full SVM Derivation
+title: 'Supplement: Full SVM Derivation'
 ---
-
 # Full SVM Derivation
 
 ## 1) Primal (soft-margin, L1 slack)

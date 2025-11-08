@@ -8,9 +8,8 @@ description: '- Reassign values so that the number of pixels with each values is
 tags:
 - lectures
 - Computational Photography
-title: 3.2.3 Histogram Equalization
+title: 8. Histogram Equalization
 ---
-
 # 3.2.3 Histogram Equalization
 
 ## Histogram Equalization

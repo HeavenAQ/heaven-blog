@@ -10,9 +10,8 @@ tags:
 - Ridge Regression
 - Model Selection
 - Cross Validation
-title: Machine Learning Homework 4 Solutions
+title: Homework 4 Solutions
 ---
-
 ## Problem 1: Bias-Variance in Ridge Regression (23 pt)
 
 ### Setup

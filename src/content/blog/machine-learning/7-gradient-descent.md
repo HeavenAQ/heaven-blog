@@ -10,9 +10,8 @@ tags:
 - Machine Learning
 - lectures
 - AI
-title: 7. Gradient Descent
+title: 9. Gradient Descent
 ---
-
 # 7. Gradient Descent
 
 ## Convex Function

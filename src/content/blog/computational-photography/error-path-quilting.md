@@ -7,9 +7,8 @@ description: '```python'
 tags:
 - homework
 - Computational Photography
-title: Error Path - Quilting
+title: 'Lab: Error Path Quilting'
 ---
-
 # Error Path - Quilting
 
 ```python

@@ -5,9 +5,8 @@ createdAt: '2024-05-30'
 description: '*7 steps*'
 tags:
 - Compiler
-title: CH-1 Review
+title: 2. Chapter 1 Review
 ---
-
 # CH-1 Review
 
 

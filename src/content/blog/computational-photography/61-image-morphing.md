@@ -7,9 +7,8 @@ description: '- Affine transformation'
 tags:
 - lectures
 - Computational Photography
-title: 6.1 Image Morphing
+title: 11. Image Morphing
 ---
-
 # 6.1 Image Morphing
 
 ![clipboard.png](/blog/61-image-morphing/q1XjEeVa-clipboard.webp)

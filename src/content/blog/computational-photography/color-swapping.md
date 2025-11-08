@@ -8,9 +8,8 @@ description: '- Substituting a specific color in an image with some targeted col
 tags:
 - homework
 - Computational Photography
-title: Color Swapping
+title: 'Lab: Color Swapping'
 ---
-
 # Color Swapping
 
 ## Definition

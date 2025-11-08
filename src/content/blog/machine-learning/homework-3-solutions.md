@@ -11,9 +11,8 @@ tags:
 - Ridge Regression
 - Lasso Regression
 - Linear Regression
-title: Machine Learning Homework 3 Solutions
+title: Homework 3 Solutions
 ---
-
 ## Problem 1: Support Vector Machines (25 pt)
 
 ### 1.1 Soft Margin with Hinge Loss

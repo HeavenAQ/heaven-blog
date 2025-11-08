@@ -7,10 +7,8 @@ description: $$
 tags:
 - Math
 - Linear Algebra 
-title: Orthogonal Decomposition 
+title: 2. Orthogonal Decomposition
 ---
-
-
 ## What's that?
 
 Let $V$ be a subspace of $\R^d$. Then any vector $w \in \R^d$ can be uniquely decomposed as:

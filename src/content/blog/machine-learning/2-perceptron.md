@@ -12,7 +12,6 @@ tags:
 - AI
 title: 2. Perceptron
 ---
-
 # 2. Perceptron
 
 ## Linear Separability

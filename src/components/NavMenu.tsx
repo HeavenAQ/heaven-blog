@@ -10,7 +10,7 @@ export default function NavMenu() {
         { label: 'Posts', href: '/blog' },
         { label: 'Topics', href: '/categories' },
         { label: 'Tags', href: '/tags' },
-        { label: 'Source', href: 'https://github.com/withastro/astro', external: true },
+        { label: 'Source', href: 'https://github.com/HeavenAQ/heaven-blog', external: true },
     ]
     const [isOpen, setIsOpen] = useState(false)
     return (

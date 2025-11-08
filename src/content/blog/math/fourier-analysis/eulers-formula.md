@@ -7,9 +7,8 @@ description: '---'
 tags:
 - Fourier Analysis
 - Math
-title: Euler's Formula
+title: 3. Euler's Formula
 ---
-
 ---
 description: "Full derivation of Euler's Formula"
 slug: euler-formula

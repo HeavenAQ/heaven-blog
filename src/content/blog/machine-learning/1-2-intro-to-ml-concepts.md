@@ -9,9 +9,8 @@ tags:
 - Machine Learning
 - Machine Learning
 - AI
-title: 1-2 Intro to ML Concepts
+title: 4. Introduction to ML Concepts
 ---
-
 # 1-2 Intro to ML Concepts
 
 ## Linear Regression

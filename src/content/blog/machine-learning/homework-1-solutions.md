@@ -12,9 +12,8 @@ tags:
 - MAP
 - Statistics
 - In Progress
-title: Machine Learning Homework 1 Solutions
+title: Homework 1 Solutions
 ---
-
 # Machine Learning Homework 1 Solutions
 
 This post contains my solutions to the first homework assignment for CS 446/ECE 449 Machine Learning. The problems cover fundamental concepts in K-Nearest Neighbors (K-NN), the Perceptron Algorithm, and Maximum Likelihood Estimation (MLE) / Maximum A Posteriori (MAP) estimation.

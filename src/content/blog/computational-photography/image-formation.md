@@ -7,9 +7,8 @@ description: $$
 tags:
 - reading materials
 - Computational Photography
-title: Image Formation
+title: 'Lab: Image Formation'
 ---
-
 # Image Formation
 
 ## Pinhole Camera

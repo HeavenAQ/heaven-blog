@@ -9,9 +9,8 @@ tags:
 - Machine Learning
 - lectures
 - AI
-title: 5. SVM
+title: 7. SVM
 ---
-
 # 5. SVM
 
 ## Linear Classifiers

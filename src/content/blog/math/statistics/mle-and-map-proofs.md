@@ -7,9 +7,8 @@ description: '- **$\mathcal{D}$:** $\alpha_H$ heads, $\alpha_T$ tails.'
 tags:
 - Math
 - Probability
-title: MLE and MAP Proofs
+title: 2. MLE and MAP Proofs
 ---
-
 # MLE and MAP Proofs
 
 ## MLE and MAP for Coin Flipping

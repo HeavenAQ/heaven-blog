@@ -8,9 +8,8 @@ description: '- a photometric measure of the [phtometric](<https://en.wikipedia.
 tags:
 - homework
 - Computational Photography
-title: Contrast Enhancement
+title: 'Lab: Contrast Enhancement'
 ---
-
 # Contrast Enhancement
 
 ## Luminance

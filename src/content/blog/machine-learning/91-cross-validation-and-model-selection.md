@@ -9,9 +9,8 @@ tags:
 - Machine Learning
 - lectures
 - AI
-title: 9.1 Cross Validation and Model Selection
+title: 11. Cross Validation and Model Selection
 ---
-
 # 9.1 Cross Validation and Model Selection
 
 ## Example: Sine Target

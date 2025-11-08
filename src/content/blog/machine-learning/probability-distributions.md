@@ -9,9 +9,8 @@ tags:
 - reading materials
 - Machine Learning
 - AI
-title: Probability Distributions
+title: 'Supplement: Probability Distributions'
 ---
-
 # Probability Distributions
 
 ## Binomial Distribution

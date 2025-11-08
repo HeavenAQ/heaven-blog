@@ -7,9 +7,8 @@ description: '- $FFT$ can be used to efficiently implement $SSD$'
 tags:
 - lectures
 - Computational Photography
-title: 2.3 Denoising, Compression
+title: 4. Denoising and Compression
 ---
-
 # 2.3 Denoising, Compression
 
 ## Image Alignment with FFT

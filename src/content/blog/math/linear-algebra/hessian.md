@@ -7,9 +7,8 @@ description: If you have a real-valued function
 tags:
 - Math
 - Linear Algebra
-title: Hessian
+title: 1. Hessian Matrix
 ---
-
 # Hessian
 
 ## Definition

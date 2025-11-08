@@ -7,9 +7,8 @@ description: '- We perceives color from the complex interacction of multiple fac
 tags:
 - lectures
 - Computational Photography
-title: 3.1 Light
+title: 5. Light
 ---
-
 # 3.1 Light
 
 ![clipboard.png](/blog/31-light/aCrvh87Q-clipboard.webp)

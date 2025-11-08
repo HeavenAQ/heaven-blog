@@ -10,9 +10,8 @@ tags:
 - Logistic Regression
 - Optimization
 - Gradient Descent
-title: Machine Learning Homework 2 Solutions
+title: Homework 2 Solutions
 ---
-
 ## Problem 1: Naive Bayes (25 pt)
 
 ### 1.1 Conditional Independence Properties
