@@ -9,7 +9,6 @@ tags:
 - Math
 title: 1. Fourier Series - Prelude and Trigonometry
 ---
-# Fourier Series (I) - Prelude and Trigonometry 
 
 ## Fourier Series - Prelude
 
@@ -28,7 +27,7 @@ y = f(x) =
 \end{cases}
 $$
 
-![clipboard.png](/blog/fourier-series-i-prelude-and-trigonometry//blog/fourier-series-i-prelude-and-trigonometry/qJAPEvkh-clipboard.webp)
+![clipboard.png](/blog/fourier-series-i-prelude-and-trigonometry/qJAPEvkh-clipboard.webp)
 
 #### 2. The Fourier Series of $sin(kx)$
 
