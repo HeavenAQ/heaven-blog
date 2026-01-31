@@ -18,6 +18,7 @@ const blog = defineCollection({
         // New: topic/category path (ordered) and tags
         categories: z.array(z.string()).default([]),
         tags: z.array(z.string()).default([]),
+        status: z.enum(['in-progress']).optional(),
     }),
 });
 

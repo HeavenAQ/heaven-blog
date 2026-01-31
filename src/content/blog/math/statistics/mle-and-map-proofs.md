@@ -1,7 +1,4 @@
 ---
-categories:
-- Math
-- Probability
 createdAt: '2025-09-21'
 description: '- **$\mathcal{D}$:** $\alpha_H$ heads, $\alpha_T$ tails.'
 tags:
@@ -61,8 +58,8 @@ $$
  \end{align*}
  $$
 
-$$
-\begin{align*}
+ $$
+ \begin{align*}
  \hat{\theta}^{MAP}
  &= \argmax_{\theta}\frac{\theta^{\alpha_H + \beta_{H} - 1} (1 - \theta)^{\alpha_T + \beta_T - 1}}{B(\beta_H, \beta_T)} \\
  &= \argmax_{\theta}\theta^{\alpha_H + \beta_{H} - 1} (1 - \theta)^{\alpha_T + \beta_T - 1} \quad (B(\beta_H, \beta_T) \text{ does not depend on } \theta)\\
@@ -71,8 +68,8 @@ $$
  &\Rightarrow 0 = \frac{(\alpha_H + \beta_{H} - 1)}{\theta} + \frac{(\alpha_T + \beta_T - 1)}{(1 - \theta)} \\
  &\Rightarrow \hat{\theta}^{MAP} = \frac{(\alpha_H + \beta_{H} - 1)}{(\alpha_T + \beta_T - 1) + (\alpha_H + \beta_{H} - 1)}
 
-\end{align*}
-$$
+  \end{align*}
+  $$
 
 > [!TIP]
 >

@@ -1,7 +1,4 @@
 ---
-categories:
-- Math
-- Probability
 createdAt: '2025-09-25'
 description: $$
 tags:
