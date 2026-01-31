@@ -13,93 +13,99 @@ title: 4. Central Limit Theorem
 ### Definition
 
 - *Given*
-  - random variables $X_1 X_2, \dots, X_n$ that are $i.i.d.$
+  - random variables $X_1, X_2, \dots, X_n$ that are $i.i.d.$
   - $\mathbb{E}[X] = \mu$
   - $\mathbb{V}[X] = \sigma^2$
-- According to the `Law of Large Numbers`
+- According to the Law of Large Numbers
 
 $$
-\bar{X_n} = \frac{1}{n} \sum^n_{i = 1} X_i 
-          \;\;\overset{\mathbb{P},\; a.s.}{\underset{n \rightarrow \infty}{\longrightarrow}} 
-          \;\;\mu
+\bar{X}_n = \frac{1}{n} \sum_{i = 1}^{n} X_i
+\;\xrightarrow{\mathbb{P}}\;
+\mu
+\quad (n \to \infty)
 $$
+
+---
 
 ### Proof
 
-- Let an event $A \in \{0, 1\}$, where $P(A = 1) = p$ with $p$ being unknown.
-- Given the total number of trials $n$ and the number of times $A = 1$ in those trials being $x$, we:
-  - calculate $\frac{x}{n}$
-  - formulate the marginal distribution function of X to be:
+- Let an event $A \in \{0,1\}$, where $P(A = 1) = p$ and $P(A = 0) = q = 1 - p$.
+- Consider $n$ independent trials of $A$, and let $X$ be the number of times $A = 1$ occurs.
+- Then $X$ follows a binomial distribution:
 
 $$
 \begin{align*}
-  &P_X(x) = \begin{pmatrix} n \\ x\end{pmatrix} p^{x} q^{n - x} \quad (p + q = 1) \\
-  &\begin{cases}
-    \mu = np \\
-    \sigma^2 = npq
-  \end{cases}
+P(X = x) &= \binom{n}{x} p^{x} q^{\,n - x}, \\
+\mu &= np, \\
+\sigma^2 &= npq.
 \end{align*}
 $$
 
-- As the $n \rightarrow \infty$, $x \rightarrow \infty$, and $p$ is fixed, the binomially distributed event $X$ is now normally distributing.
+- As $n \to \infty$, with $p$ fixed and $x$ in a neighborhood of $np$, the binomial distribution admits a normal approximation
+  (de Moivre–Laplace theorem):
 
 $$
-X \sim N(\mu, \sigma^2)
+X \approx N(\mu, \sigma^2).
 $$
 
-- The original $PMF$ function is also reformulated as a $PDF$
+- Under this approximation, the probability mass function of $X$ can be approximated by the probability density function:
 
 $$
-f_X(x) = \frac{1}{\sqrt{2\pi\sigma}} \exp\left({-\frac{(x - \mu)^2}{2\sigma^2}}\right)
+f_X(x) = \frac{1}{\sqrt{2\pi\sigma^2}}
+\exp\!\left(-\frac{(x - \mu)^2}{2\sigma^2}\right).
 $$
 
-- Now, define a new random variable $\bar X = \frac{X}{n}$ representing the number of times $x$ happens in $n$ trials. We need to formulate its distribution function from $f_X(x)$
-- Given the `Total Probability Theorem`:
+- Now define a new random variable
 
 $$
-\int^{\infty}_{-\infty} f_{\bar X}(\bar x) d{\bar x} 
-= \int^{\infty}_{-\infty} f_X(x) dx 
-= 1
-$$
-- We can then use variable substitution with the facts that: 
-  - $x = n\bar{x}$ 
-  - $\frac{dx}{d\bar x} = n$ 
-
-$$
-\begin{align*}
-&\int^{\infty}_{-\infty} f_{\bar X}(\bar x) d{\bar x} \\
-&= \int^{\infty}_{-\infty} f_X(n\bar x) \frac{dx}{d\bar x} d\bar x \\
-&= \int^{\infty}_{-\infty} n f_X(n\bar x) d\bar x \\
-&\Rightarrow f_{\bar X} (\bar x) = n \cdot f_X(n\bar x)
-\end{align*}
+\bar X = \frac{X}{n},
 $$
 
-- Now, expand this formula
+representing the proportion of times $A = 1$ occurs in $n$ trials.
+
+- Using a change of variables under the normal approximation, where $x = n\bar x$ and $\frac{dx}{d\bar x} = n$, we obtain:
 
 $$
 \begin{align*}
-&f_{\bar X} (\bar x) \\
+f_{\bar X}(\bar x)
 &= n \cdot f_X(n\bar x) \\
-&= \frac{\cancel{n}}{\sqrt{2 \pi \cancel{n}pq}} \exp\left(-\frac{(\cancel{n}\bar x - \cancel{n}p)^2}{2\cancel{n}pq}\right) \quad (\mu = np, \;\; \sigma^2 = npq) \\
-&= \frac{1}{\sqrt{2 \pi \frac{pq}{n}}} \exp\left(-\frac{(\bar x - p)^2}{2\frac{pq}{n}}\right) \quad (\mu = np, \;\; \sigma^2 = npq) \\
-&\Rightarrow \mu_{\bar X} = p, \quad \sigma^2_{\bar X} = \frac{pq}{n} 
+&= \frac{n}{\sqrt{2\pi npq}}
+\exp\!\left(-\frac{(n\bar x - np)^2}{2npq}\right) \\
+&= \frac{1}{\sqrt{2\pi \frac{pq}{n}}}
+\exp\!\left(-\frac{(\bar x - p)^2}{2\frac{pq}{n}}\right).
 \end{align*}
 $$
 
-- As $n \rightarrow \infty$, $\sigma^2 \rightarrow 0$
+- Therefore, the mean and variance of $\bar X$ are:
 
 $$
-\lim_{n \rightarrow \infty} \sigma^2 = \lim_{n \rightarrow \infty} \frac{pq}{n} = 0
+\mu_{\bar X} = p, \qquad
+\sigma^2_{\bar X} = \frac{pq}{n}.
 $$
 
-- We can then derive that:
+- As $n \to \infty$, the variance converges to zero:
 
 $$
-\bar X \sim N(p, \frac{pq}{n}) \overset{n \rightarrow \infty}{\longrightarrow} \bar X \sim N(p, 0)
+\lim_{n \to \infty} \sigma^2_{\bar X}
+= \lim_{n \to \infty} \frac{pq}{n}
+= 0.
 $$
 
-- So, when the number of trails approaches infinity, the probability of $P(A = 1) = p$ will be the mean value.
+- Hence, under the normal approximation, the distribution of $\bar X$ concentrates at $p$ and converges to a degenerate distribution at $p$.
+
+- This implies that the sample proportion converges in probability to $p$:
 
 $$
-\lim_{n \rightarrow \infty} \frac{x}{n} = p
+\lim_{n \to \infty} \frac{X}{n} = p.
 $$
+
+
+### Diagram Comparison
+
+#### n = 30
+
+![n = 30](/blog/central-limit-theorem/sampling-distribution-n-30.webp)
+
+#### n = 10000
+
+![n = 10000](/blog/central-limit-theorem/sampling-distribution-n-10000.webp)
