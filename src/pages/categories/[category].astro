@@ -7,17 +7,18 @@ import Container from '../../components/Container.astro';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 import { slugify, deslugify } from '../../lib/slug';
+import { getPostCategories } from '../../lib/categories';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   const cats = new Set<string>();
-  posts.forEach((p) => (p.data.categories || []).forEach((c)=> cats.add(slugify(c))));
+  posts.forEach((p) => getPostCategories(p).forEach((c)=> cats.add(slugify(c))));
   return Array.from(cats).map((c) => ({ params: { category: c }}));
 }
 
 const { category } = Astro.params;
 const posts = (await getCollection('blog'))
-  .filter((p) => (p.data.categories || []).some((c)=> slugify(c) === category))
+  .filter((p) => getPostCategories(p).some((c)=> slugify(c) === category))
   .sort((a, b) => {
     // Sort by title to maintain numbered sequence (1, 2, 3, etc.)
     return a.data.title.localeCompare(b.data.title, undefined, { numeric: true, sensitivity: 'base' });
@@ -57,7 +58,12 @@ const display = deslugify(category!);
           {posts.map((p) => (
             <li class="rounded-lg border border-zinc-200/60 dark:border-zinc-700/60 p-4 hover:border-orange-500/70">
               <a href={`/blog/${p.slug}`}>
-                <h3 class="font-semibold text-lg">{p.data.title}</h3>
+                <div class="flex flex-wrap items-center gap-2">
+                  <h3 class="font-semibold text-lg">{p.data.title}</h3>
+                  {p.data.status === 'in-progress' && (
+                    <span class="status-pill">In progress</span>
+                  )}
+                </div>
                 <div class="text-sm text-zinc-600 dark:text-zinc-400"><FormattedDate date={p.data.createdAt} /></div>
                 <p class="mt-2 text-sm opacity-90">{p.data.description}</p>
               </a>

@@ -7,6 +7,7 @@ import Container from '../../components/Container.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import { getCollection } from 'astro:content';
 import { slugify, titleCase } from '../../lib/slug';
+import { getPostCategories } from '../../lib/categories';
 
 // Get all posts sorted by date
 const posts = (await getCollection('blog')).sort((a,b)=> b.data.createdAt.valueOf() - a.data.createdAt.valueOf());
@@ -15,7 +16,7 @@ const posts = (await getCollection('blog')).sort((a,b)=> b.data.createdAt.valueO
 const catMap = new Map<string, number>();
 const tagMap = new Map<string, number>();
 for (const p of posts) {
-  for (const c of (p.data.categories || [])) catMap.set(c, (catMap.get(c) || 0) + 1);
+  for (const c of getPostCategories(p)) catMap.set(c, (catMap.get(c) || 0) + 1);
   for (const t of (p.data.tags || [])) tagMap.set(t, (tagMap.get(t) || 0) + 1);
 }
 const categories = Array.from(catMap.entries()).sort((a,b)=>a[0].localeCompare(b[0]));
@@ -83,7 +84,7 @@ const tags = Array.from(tagMap.entries()).sort((a,b)=>a[0].localeCompare(b[0]));
 
             <div id="cards" class="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
               {posts.map((p, index) => {
-                const cats = (p.data.categories || []).map(slugify);
+                const cats = getPostCategories(p).map(slugify);
                 const tgs = (p.data.tags || []).map(slugify);
                 const dataCats = cats.join(' ');
                 const dataTags = tgs.join(' ');
@@ -95,7 +96,12 @@ const tags = Array.from(tagMap.entries()).sort((a,b)=>a[0].localeCompare(b[0]));
                       <img src={p.data.heroImage} alt={p.data.title} class="w-full h-56 object-cover group-hover:opacity-95" loading="lazy" />
                     )}
                     <div class="p-6">
-                      <h3 class="font-semibold text-xl mb-1 group-hover:text-orange-600 dark:group-hover:text-orange-400 leading-snug">{p.data.title}</h3>
+                      <div class="flex flex-wrap items-center gap-2 mb-1">
+                        <h3 class="font-semibold text-xl group-hover:text-orange-600 dark:group-hover:text-orange-400 leading-snug">{p.data.title}</h3>
+                        {p.data.status === 'in-progress' && (
+                          <span class="status-pill">In progress</span>
+                        )}
+                      </div>
                       <div class="text-sm text-zinc-600 dark:text-zinc-400"><FormattedDate date={p.data.createdAt} /></div>
                       <p class="mt-2 text-[15px] opacity-90 line-clamp-2">{p.data.description}</p>
                       {(p.data.tags?.length || 0) > 0 && (

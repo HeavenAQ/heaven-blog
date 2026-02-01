@@ -6,11 +6,12 @@ import Body from '../../components/Body.astro';
 import Container from '../../components/Container.astro';
 import { getCollection } from 'astro:content';
 import { slugify, titleCase } from '../../lib/slug';
+import { getPostCategories } from '../../lib/categories';
 
 const posts = await getCollection('blog');
 const map = new Map<string, number>();
 for (const p of posts) {
-  for (const c of (p.data.categories || [])) {
+  for (const c of getPostCategories(p)) {
     map.set(c, (map.get(c) || 0) + 1);
   }
 }
